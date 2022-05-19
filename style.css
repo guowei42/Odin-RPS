@@ -1,0 +1,29 @@
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 0px;
+    text-align: center;
+}
+
+.main, .score {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    padding: 0px 100px;
+}
+
+.score {
+    display: flex;
+}
+
+.playing-field, .test {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#player-score, #comp-score, #player, #computer {
+    min-width: 180px;
+}

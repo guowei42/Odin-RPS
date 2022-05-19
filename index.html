@@ -7,8 +7,33 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
+        <script src="rps.js" defer></script>
     </head>
     <body>
-        <script src="rps.js" async defer></script>
+        <div class="score-table">
+            Score
+            <div class="test">
+                <div class="score">
+                    <div id="player-score">
+                        0
+                    </div>
+                    <div id="comp-score">
+                        0
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="playing-field">
+            <div class="main">
+                <div id="player">
+                    <button type="button" id="rock">Rock</button>
+                    <button type="button" id="paper">Paper</button>
+                    <button type="button" id="scissors">Scissors</button>
+                </div>
+                <div id="computer">
+                    Computer Selection
+                </div>
+            </div>
+        </div>
     </body>
 </html>

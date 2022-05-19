@@ -15,7 +15,7 @@ function play(playerSelection, computerSelection) {
     let computer = computerSelection;
 
     if (player == computer) {
-        console.log("It's a Tie!");
+        //console.log("It's a Tie!");
         return -1;
     }
 
@@ -23,28 +23,28 @@ function play(playerSelection, computerSelection) {
         case "rock":
             switch (computer) {
                 case "paper":
-                    console.log("You Lose! Paper beats Rock");
+                    //console.log("You Lose! Paper beats Rock");
                     return 0;
                 case "scissors":
-                    console.log("You Win! Rock beats Scissors");
+                    //console.log("You Win! Rock beats Scissors");
                     return 1;
             }
         case "paper":
             switch (computer) {
                 case "rock":
-                    console.log("You Win! Paper beats Rock");
+                    //console.log("You Win! Paper beats Rock");
                     return 1;
                 case "scissors":
-                    console.log("You Lose! Scissors beats Paper");
+                    //console.log("You Lose! Scissors beats Paper");
                     return 0;
             }
         case "scissors":
             switch (computer) {
                 case "paper":
-                    console.log("You Win! Scissors beats Paper");
+                    //console.log("You Win! Scissors beats Paper");
                     return 1;
                 case "rock":
-                    console.log("You Lose! Rock beats Scissors");
+                    //console.log("You Lose! Rock beats Scissors");
                     return 0;
             }
         default:
@@ -56,22 +56,42 @@ function convertLower(input) {
     let inputString = String(input);
     return inputString.toLowerCase();
 }
+let playerScore = 0;
+let compScore = 0;
+let ROUNDS = 5;
 
-function game() {
-    let playerScore = 0;
-    let compScore = 0;
-    let ROUNDS = 5;
+function game(button) {
+    let computer = computerPlay();
+    const compChange = document.querySelector("#computer");
+    compChange.innerHTML = computer;
+    let player = play(button.id, computer);
 
-    for (let i = 0; i < ROUNDS; i++) {
-        let playerSelection = prompt("What's your choice? Rock, Paper, Scissors");
-        let computerSelection = computerPlay();
-        let winner = play(playerSelection, computerSelection);
-        if (winner == 1) {
-            playerScore++;
-        } else if (winner == 0){
-            compScore++;
-        }
+    const docPlayerScore = document.querySelector("#player-score");
+    const docCompScore = document.querySelector("#comp-score")
+    if (player == 1) {
+        playerScore++;
+        docPlayerScore.innerHTML = playerScore;
+    } else if (player == 0) {
+        compScore++;
+        docCompScore.innerHTML = compScore;
     }
-    console.log(playerScore);
-    console.log(compScore);
 }
+
+
+
+const selection = document.querySelectorAll('button');
+selection.forEach((button) => {
+    button.addEventListener('click', () => {
+        game(button);
+        if (playerScore == ROUNDS) {
+            window.location.pathname = "winner/human.html";
+        } else if (compScore == ROUNDS){
+            window.location.pathname = "winner/comp.html";
+        }
+    })
+});
+/*
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+*/
